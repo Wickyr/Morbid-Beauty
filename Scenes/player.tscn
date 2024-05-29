@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ir62xhq36u"]
+
+[ext_resource type="Script" path="res://Script/player.gd" id="1_3a2sk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ot5ne"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hjyk6"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3a2sk")
+
+[node name="Stand" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ot5ne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stand"]
+mesh = SubResource("CapsuleMesh_hjyk6")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stand"]
+transform = Transform3D(0.842351, 0, 0, 0, 0.129544, 0, 0, 0, 1.31339, -0.0229328, 0.390813, -0.148036)
+mesh = SubResource("CapsuleMesh_hjyk6")
+skeleton = NodePath("../..")
+
+[node name="Crouch" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.56066, 0, 0, 0, 1, 0, -0.372891, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_ot5ne")
+disabled = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Crouch"]
+mesh = SubResource("CapsuleMesh_hjyk6")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Crouch"]
+transform = Transform3D(0.842351, 0, 0, 0, 0.231056, 0, 0, 0, 1.31339, -0.0229328, 0.339331, -0.148036)
+mesh = SubResource("CapsuleMesh_hjyk6")
+skeleton = NodePath("../..")
+
+[node name="Check" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
